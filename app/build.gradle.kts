@@ -2,8 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.ksp)
-
+    alias(libs.plugins.ksp) // Pastikan plugin ini tidak merah
 }
 
 android {
@@ -52,10 +51,19 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.compose.icons)
-    implementation(libs.bundles.room)
+
+    // --- PERBAIKAN DI SINI ---
+    implementation(libs.bundles.room) // Ini hanya Runtime
+
+    // WAJIB ADA BARIS INI UNTUK MEMBUAT DATABASE:
+    // Saya hardcode versinya agar pasti jalan.
+    // Jika nanti Anda punya "libs.room.compiler", bisa diganti jadi ksp(libs.room.compiler)
+    ksp("androidx.room:room-compiler:2.6.1")
+    // -------------------------
+
     implementation(libs.lifecycle.viewmodel.compose)
     implementation(libs.lifecycle.runtime.compose)
-  
+
     implementation(libs.navigation.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
