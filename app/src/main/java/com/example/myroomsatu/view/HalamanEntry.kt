@@ -25,6 +25,10 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.myroomsatu.R
 import com.example.myroomsatu.view.route.DestinasiEntry
+import com.example.myroomsatu.viewmodel.DetailSiswa
+import com.example.myroomsatu.viewmodel.EntryViewModel
+import com.example.myroomsatu.viewmodel.UIStateSiswa
+import com.example.myroomsatu.viewmodel.provider.PenyediaViewModel
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,14 +44,14 @@ fun EntrySiswaScreen(
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
+            // Memanggil SiswaTopAppBar dari File 1
             SiswaTopAppBar(
-                title = stringResource(DestinasiEntry.titleRes), // Pastikan titleRes di DestinasiEntry adalah Int (R.string...)
-                canNavigateBack = true,
+                title = stringResource(DestinasiEntry.titleRes),
+                canNavigateBack = true, // Halaman ini BUTUH tombol back
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
             )
         }
-
     ) { innerPadding ->
         EntrySiswaBody(
             uiStateSiswa = viewModel.uiStateSiswa,
@@ -74,6 +78,7 @@ fun EntrySiswaBody(
     modifier: Modifier = Modifier
 ) {
     Column(
+        // Pastikan Anda sudah membuat file dimens.xml, atau ganti dengan angka langsung (misal 16.dp)
         verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_large)),
         modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium))
     ) {
@@ -88,7 +93,7 @@ fun EntrySiswaBody(
             shape = MaterialTheme.shapes.small,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = stringResource(R.string.submit))
+            Text(text = stringResource(R.string.btn_submit))
         }
     }
 }
@@ -139,8 +144,8 @@ fun FormInputSiswa(
         }
         HorizontalDivider(
             modifier = Modifier.padding(bottom = dimensionResource(id = R.dimen.padding_medium)),
-            thickness = dimensionResource(id = R.dimen.thickness_divider),
-            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f) // Atau Color.Blue sesuai gambar
+            thickness = dimensionResource(id = R.dimen.padding_medium),
+            color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
         )
     }
 }
