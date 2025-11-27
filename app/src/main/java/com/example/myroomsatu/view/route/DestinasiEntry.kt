@@ -1,4 +1,7 @@
 package com.example.myroomsatu.view.route
 
-object DestinasiEntry {
+
+object DestinasiEntry : DestinasiNavigasi {
+    override val route = "item_entry"
+    override val titleRes = "Tambah Siswa" // Ini valid HANYA jika interface meminta String
 }
