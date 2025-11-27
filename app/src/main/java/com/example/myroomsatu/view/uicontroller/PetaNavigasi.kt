@@ -1,4 +1,4 @@
-package com.example.myroomsatu.view.vicontroller
+package com.example.myroomsatu.view.uicontroller
 
 // Import standar Android & Compose
 import androidx.compose.runtime.Composable
@@ -7,6 +7,8 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.myroomsatu.view.EntrySiswaScreen
+import com.example.myroomsatu.view.HomeScreen
 import com.example.myroomsatu.view.route.DestinasiHome
 import com.example.myroomsatu.view.route.DestinasiEntry
 
