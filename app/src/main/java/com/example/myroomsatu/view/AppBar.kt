@@ -31,7 +31,6 @@ fun SiswaTopAppBar(
                 IconButton(onClick = navigateUp) {
                     Icon(
                         imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                        // Perbaikan: Gunakan R.string.back, jangan string langsung "Back"
                         contentDescription = stringResource(R.string.back)
                     )
                 }
